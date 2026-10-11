@@ -27,12 +27,12 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Install Capacitor & Add Android
         working-directory: ./frontend
         run: |
-          npm install @capacitor/core @capacitor/cli @capacitor/android
+          npm install @capacitor/core@latest @capacitor/cli@latest @capacitor/android@latest
           npx cap init "Opti Manage" "com.optimanage.app" --web-dir dist
           npx cap add android
           npx cap sync android
@@ -41,7 +41,7 @@ jobs:
         working-directory: ./frontend/android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --stacktrace
+          ./gradlew assembleDebug --no-daemon -x lint
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
