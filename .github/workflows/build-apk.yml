@@ -29,9 +29,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install Capacitor & Add Android
         working-directory: ./frontend
         run: |
@@ -39,9 +36,6 @@ jobs:
           npx cap init "Opti Manage" "com.optimanage.app" --web-dir dist
           npx cap add android
           npx cap sync android
-
-      - name: Accept Android Licenses
-        run: yes | sdkmanager --licenses || true
 
       - name: Build APK with Gradle
         working-directory: ./frontend/android
