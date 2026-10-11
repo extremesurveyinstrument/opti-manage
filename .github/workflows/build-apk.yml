@@ -29,9 +29,6 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install Capacitor & Add Android
         working-directory: ./frontend
         run: |
